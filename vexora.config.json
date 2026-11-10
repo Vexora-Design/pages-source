@@ -1,0 +1,11 @@
+{
+  "outputDir": "auto",
+  "preserve": [
+    ".git",
+    ".github",
+    ".gitignore",
+    "CNAME",
+    "README.md"
+  ],
+  "siteBase": "/"
+}

@@ -1,0 +1,52 @@
+name: Publish VEXORA to official Pages repo
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_TOKEN: ${{ secrets.VEXORA_DEPLOY_TOKEN }}
+    steps:
+      - name: Require deploy token
+        run: |
+          if [ -z "$DEPLOY_TOKEN" ]; then
+            echo "::error::Set VEXORA_DEPLOY_TOKEN with write permission to Vexora-Design/vexora-design.github.io"
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+        with:
+          path: pages-source
+      - uses: actions/checkout@v4
+        with:
+          repository: Vexora-Design/vexora-design.github.io
+          ref: main
+          token: ${{ secrets.VEXORA_DEPLOY_TOKEN }}
+          path: vexora-design.github.io
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install official dependencies
+        working-directory: pages-source
+        run: npm install --no-audit --no-fund
+      - name: Check sources
+        working-directory: pages-source
+        run: npm run check
+      - name: Build into sibling repository checkout
+        working-directory: pages-source
+        run: npm run build -- --out ../vexora-design.github.io
+      - name: Commit and push build
+        working-directory: vexora-design.github.io
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes in build"
+            exit 0
+          fi
+          git commit -m "Deploy VEXORA ${GITHUB_SHA}"
+          git push origin HEAD:main
