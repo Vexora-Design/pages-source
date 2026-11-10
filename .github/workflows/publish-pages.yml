@@ -11,34 +11,38 @@ jobs:
     env:
       DEPLOY_TOKEN: ${{ secrets.VEXORA_DEPLOY_TOKEN }}
     steps:
-      - name: Require deploy token
-        run: |
-          if [ -z "$DEPLOY_TOKEN" ]; then
-            echo "::error::Set VEXORA_DEPLOY_TOKEN with write permission to Vexora-Design/vexora-design.github.io"
-            exit 1
-          fi
+      - name: Explain optional deployment setup
+        if: env.DEPLOY_TOKEN == ''
+        run: echo "::notice::Automatic publication is disabled until VEXORA_DEPLOY_TOKEN is configured with write permission to Vexora-Design/vexora-design.github.io. The published website remains unchanged."
       - uses: actions/checkout@v4
+        if: env.DEPLOY_TOKEN != ''
         with:
           path: pages-source
       - uses: actions/checkout@v4
+        if: env.DEPLOY_TOKEN != ''
         with:
           repository: Vexora-Design/vexora-design.github.io
           ref: main
           token: ${{ secrets.VEXORA_DEPLOY_TOKEN }}
           path: vexora-design.github.io
       - uses: actions/setup-node@v4
+        if: env.DEPLOY_TOKEN != ''
         with:
           node-version: '22'
       - name: Install official dependencies
+        if: env.DEPLOY_TOKEN != ''
         working-directory: pages-source
         run: npm install --no-audit --no-fund
       - name: Check sources
+        if: env.DEPLOY_TOKEN != ''
         working-directory: pages-source
         run: npm run check
       - name: Build into sibling repository checkout
+        if: env.DEPLOY_TOKEN != ''
         working-directory: pages-source
         run: npm run build -- --out ../vexora-design.github.io
       - name: Commit and push build
+        if: env.DEPLOY_TOKEN != ''
         working-directory: vexora-design.github.io
         run: |
           git config user.name "github-actions[bot]"
