@@ -53,8 +53,10 @@ The existing `CNAME` file in the published repository is preserved.
 ## Design reference
 
 UI/UX review follows [UI UX Pro Max Skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill), especially the Creative Agency / Portfolio profiles, storytelling landing layout, responsive UX guidance, keyboard accessibility, reduced-motion guidance and standard GSAP scroll reveals. See `design-system/MASTER.md`.
-## Monochrome contact update (November 2026)
+## Color direction (November 2026)
 
-All UI colors, including imagery and shader parameters, are grayscale. The old contact form is removed and replaced with direct telephone, email, Telegram, and Instagram links. Unmodified original React Bits sources (SideRays, GradientBlinds and GhostFibers) live in `src/components/reactbits/`; use the host layout CSS for sizing and their props for grayscale tones. GSAP handles page/scroll animations as before.
+The site uses a **grayscale UI foundation** (backgrounds, surfaces, typography and footer), **full-color project photos**, and **colored official React Bits WebGL backgrounds**: warm/cool SideRays in the hero, violet-to-blue GradientBlinds behind the detail manifesto and violet/azure GhostFibers behind direct contact. Action states use restrained warm amber for CTAs and deep blue for selected filters. No grayscale image filtering is applied.
+
+The previous contact form is removed and replaced with direct telephone, email, Telegram, and Instagram links. The official original React Bits sources (SideRays, GradientBlinds and GhostFibers) in `src/components/reactbits/` remain unmodified; only component properties and the surrounding composition styles are tailored. GSAP handles the page/scroll motion as before.
 
 GitHub Pages build output must remain in the separate `Vexora-Design/vexora-design.github.io` repository. Personal `emadgh/emadgh.github.io` is never used.

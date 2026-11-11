@@ -216,7 +216,7 @@ function App() {
       <section className="hero" id="home" aria-labelledby="hero-title">
         <div className="hero__photograph" style={{backgroundImage:`url(${ASSET}hero-ceramics.webp)`}} role="img" aria-label={t.heroPhoto}/>
         <div className="hero__wash" aria-hidden="true"/>
-        <div className="reactbits-bg hero__rays" aria-hidden="true"><SideRays rayColor1="#f4f4f4" rayColor2="#9a9a9a" origin="top-right" intensity={1.6} speed={1.2} spread={2.1} density={5} glow={.72} opacity={.66} saturation={0} dust={0} maxDevicePixelRatio={1.5}/></div>
+        <div className="reactbits-bg hero__rays" aria-hidden="true"><SideRays rayColor1="#ffce85" rayColor2="#8ab9ff" origin="top-right" intensity={1.6} speed={1.2} spread={2.1} density={5} glow={.72} opacity={.83} saturation={1} dust={0} maxDevicePixelRatio={1.5}/></div>
         <div className="container hero__container">
           <div className="hero__content">
             <div className="kicker"><span className="kicker__square"/>{t.heroTop}</div>
@@ -256,12 +256,12 @@ function App() {
         </div>
       </section>
 
-      <section className="manifesto section--dark"><div className="reactbits-bg manifesto__blinds" aria-hidden="true"><GradientBlinds gradientColors={['#0b0b0b','#393939','#6b6b6b']} angle={-12} blindCount={14} noise={.15} shine={.55} relief={.6} glow={.25} sway={.15} speed={.45} gradientSpeed={.13} spotlightOpacity={.45} lightColor="#e2e2e2" dpr={1.5}/></div><div className="container manifesto__grid"><div data-reveal><span className="eyebrow eyebrow--light"><span className="index-square"/>{t.detailKicker}</span><h2><GradientText colors={['#f7f7f7','#bcbcbc','#f7f7f7']} animationSpeed={15} variant="linear">{t.detailTitle}</GradientText></h2></div><div className="manifesto__aside" data-reveal><p>{t.detailText}</p><div className="manifesto__cross" aria-hidden="true">✳</div></div></div></section>
+      <section className="manifesto section--dark"><div className="reactbits-bg manifesto__blinds" aria-hidden="true"><GradientBlinds gradientColors={['#231c42','#6956a9','#93b6fa']} angle={-12} blindCount={14} noise={.15} shine={.55} relief={.6} glow={.25} sway={.15} speed={.45} gradientSpeed={.13} spotlightOpacity={.45} lightColor="#e7ceff" dpr={1.5}/></div><div className="container manifesto__grid"><div data-reveal><span className="eyebrow eyebrow--light"><span className="index-square"/>{t.detailKicker}</span><h2><GradientText colors={['#f8f7ff','#a7bfff','#ffd7ae']} animationSpeed={15} variant="linear">{t.detailTitle}</GradientText></h2></div><div className="manifesto__aside" data-reveal><p>{t.detailText}</p><div className="manifesto__cross" aria-hidden="true">✳</div></div></div></section>
 
-      <section id="process" className="process section--light"><div className="container"><div className="section-heading" data-reveal><div><p className="eyebrow"><span className="index-square"/>{t.processIndex}</p><h2>{t.processA}<br/><em>{t.processB}</em></h2></div><p>{t.processText}</p></div><div className="process__grid">{t.steps.map(([title,desc],i)=><SpotlightCard key={i} className="process-card" spotlightColor="#bcbcbc" intensity={.14} borderGlow={.4}><span className="process-card__index">0{i+1}</span><div className="process-card__rule"/><h3>{title}</h3><p>{desc}</p><span className="process-card__corner">↗</span></SpotlightCard>)}</div></div></section>
+      <section id="process" className="process section--light"><div className="container"><div className="section-heading" data-reveal><div><p className="eyebrow"><span className="index-square"/>{t.processIndex}</p><h2>{t.processA}<br/><em>{t.processB}</em></h2></div><p>{t.processText}</p></div><div className="process__grid">{t.steps.map(([title,desc],i)=><SpotlightCard key={i} className="process-card" spotlightColor="#9cb9ff" intensity={.14} borderGlow={.4}><span className="process-card__index">0{i+1}</span><div className="process-card__rule"/><h3>{title}</h3><p>{desc}</p><span className="process-card__corner">↗</span></SpotlightCard>)}</div></div></section>
 
       <section id="contact" className="contact section--dark" aria-labelledby="contact-heading">
-        <div className="reactbits-bg contact__fibers" aria-hidden="true"><GhostFibers glowColor="#bcbcbc" lineColor="#f5f5f5" secondaryColor="#737373" layers={2} threads={56} speed={.22} density={.65} glow={.65} brightness={.8} particles={.23} sparkle={.17} waves={.75} dpr={1.4}/></div>
+        <div className="reactbits-bg contact__fibers" aria-hidden="true"><GhostFibers glowColor="#af92ff" lineColor="#e9e3ff" secondaryColor="#7abaff" layers={2} threads={56} speed={.22} density={.65} glow={.65} brightness={.8} particles={.23} sparkle={.17} waves={.75} dpr={1.4}/></div>
         <div className="container contact__grid">
           <div className="contact__message" data-reveal>
             <p className="eyebrow eyebrow--light"><span className="index-square"/>{t.contactIndex}</p>
