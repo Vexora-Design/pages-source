@@ -7,4 +7,5 @@ for(const file of required){const ok=existsSync(path.join(root,file)); console.l
 const app=readFileSync(path.join(root,'src/App.jsx'),'utf8');
 for(const marker of ['@gsap/react','ScrollTrigger','SpotlightCard','GradientText','Magnet','vexora_lang']){const ok=app.includes(marker);console.log((ok?'OK':'MISSING')+' integration '+marker);if(!ok)pass=false;}
 if(!readFileSync(path.join(root,'index.html'),'utf8').includes('lang="fa"')){console.error('Default language must be fa');pass=false;}
+if (app.includes('<form ')) { console.error('Contact form must be removed.');pass=false;}
 process.exitCode=pass?0:1;

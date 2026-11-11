@@ -53,3 +53,8 @@ The existing `CNAME` file in the published repository is preserved.
 ## Design reference
 
 UI/UX review follows [UI UX Pro Max Skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill), especially the Creative Agency / Portfolio profiles, storytelling landing layout, responsive UX guidance, keyboard accessibility, reduced-motion guidance and standard GSAP scroll reveals. See `design-system/MASTER.md`.
+## Monochrome contact update (November 2026)
+
+All UI colors, including imagery and shader parameters, are grayscale. The old contact form is removed and replaced with direct telephone, email, Telegram, and Instagram links. Unmodified original React Bits sources (SideRays, GradientBlinds and GhostFibers) live in `src/components/reactbits/`; use the host layout CSS for sizing and their props for grayscale tones. GSAP handles page/scroll animations as before.
+
+GitHub Pages build output must remain in the separate `Vexora-Design/vexora-design.github.io` repository. Personal `emadgh/emadgh.github.io` is never used.

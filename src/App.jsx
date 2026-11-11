@@ -1,17 +1,19 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpLeft, ArrowUpRight, ArrowDownLeft, ArrowDownRight, ArrowLeft, ArrowRight, ArrowDown, ArrowUp, Menu, X, Layers3, Box, Code2, MoveUpRight, SlidersHorizontal, Check, Mail, Download, Instagram, PenTool, Activity, Play, MousePointer2, ExternalLink, Github } from 'lucide-react';
+import { ArrowUpLeft, ArrowUpRight, ArrowDownLeft, ArrowDownRight, ArrowLeft, ArrowRight, ArrowDown, ArrowUp, Menu, X, Layers3, Box, Code2, MoveUpRight, SlidersHorizontal, Instagram, PenTool, Activity, Play, MousePointer2, ExternalLink, Github } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import SpotlightCard from './components/reactbits/SpotlightCard.jsx';
 import GradientText from './components/reactbits/GradientText.jsx';
 import Magnet from './components/reactbits/Magnet.jsx';
+import SideRays from './components/reactbits/SideRays.jsx';
+import GradientBlinds from './components/reactbits/GradientBlinds.jsx';
+import GhostFibers from './components/reactbits/GhostFibers.jsx';
 
 // Official GSAP plugins. Motion deliberately respects reduced-motion preferences.
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const ASSET = `${import.meta.env.BASE_URL}assets/`;
-const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL?.trim() || '';
 
 const content = {
   fa: {
@@ -50,7 +52,6 @@ const content = {
     detailKicker:'DESIGN IS IN THE DETAILS', detailTitle:'زیبا، فقط وقتی ارزشمند است که درست کار کند.',
     detailText:'در وکسورا طراحی، رندر و کد سه فعالیت جدا از هم نیستند. این‌ها ابزارهایی‌اند برای حل یک مسئله، با توجه هم‌زمان به کیفیت بصری، واقعیت اجرا و تجربه استفاده.',
     contactIndex:'05 / START A CONVERSATION', contactTitleA:'پروژه‌ای در ذهن دارید؟',contactTitleB:'درباره‌اش صحبت کنیم.', contactP:'چه به طرح یک مجموعه سرامیک نیاز داشته باشید، چه یک ابزار نرم‌افزاری اختصاصی یا رندر سه‌بعدی، شرح کوتاهی از مسئله‌تان نقطه شروع خوبی است.',
-    contactName:'نام', contactEmail:'ایمیل', contactMessage:'توضیح پروژه',contactNamePH:'نام شما', contactEmailPH:'name@example.com',contactMessagePH:'چه چیزی می‌خواهید طراحی یا توسعه داده شود؟',contactSend:'آماده‌سازی درخواست',contactHint:'اگر ایمیل تماس تنظیم نشده باشد، شرح پروژه به‌صورت فایل دانلود می‌شود تا آن را از طریق روش دلخواه ارسال کنید.',contactReady:'برنامه ایمیل با متن آماده باز شد.',contactSaved:'شرح پروژه دریافت شد؛ لطفاً فایل را از طریق روش ارتباطی دلخواه ارسال کنید.',
     footerLine:'طراحی سطوح، فضاها و ابزارهای دیجیتال',footerTop:'بازگشت به بالا',footerLegal:'فعالیت مستقل طراحی و توسعه', languageToggle:'EN',workDetails:'مشاهده توضیحات',collapse:'بستن منو',openMenu:'باز کردن منو',more:'بیشتر بدانید',prev:'قبلی',next:'بعدی',progress:'حرکت در صفحه', empty:'در این دسته موردی وجود ندارد.'
   },
   en: {
@@ -81,7 +82,6 @@ const content = {
     processIndex:'04 / HOW WE WORK',processA:'Good design',processB:'is deliberate.',processText:'Every project begins with understanding the problem and stays grounded in the details through delivery.',steps:[['Understand the brief','Define the goal, audience, technical constraints and required deliverable.'],['Design and prototype','Evaluate visual approaches, user experience and real-world feasibility.'],['Build and deliver','Prepare files, models or software with maintainability and future development in mind.']],
     detailKicker:'DESIGN IS IN THE DETAILS',detailTitle:'Beautiful matters when it works.',detailText:'At VEXORA, design, visualization and code are not isolated disciplines. They are different tools for solving the same problem—with equal attention to visual quality, practical execution and usability.',
     contactIndex:'05 / START A CONVERSATION',contactTitleA:'Have a project in mind?',contactTitleB:'Let’s talk about it.',contactP:'Whether it is a porcelain collection, a custom digital tool or a 3D visualization, a short description of the challenge is a great place to start.',
-    contactName:'Name',contactEmail:'Email',contactMessage:'Project brief',contactNamePH:'Your name',contactEmailPH:'name@example.com',contactMessagePH:'What would you like to design or build?',contactSend:'Prepare inquiry',contactHint:'If the contact email is not configured, a brief is downloaded for you to send through your preferred channel.',contactReady:'Your email app was opened with a prepared inquiry.',contactSaved:'Your project brief was downloaded. Please send it through your preferred contact channel.',
     footerLine:'Surfaces, spaces and purposeful digital tools',footerTop:'Back to top',footerLegal:'Independent design and development practice',languageToggle:'فا',workDetails:'View the story',collapse:'Close navigation',openMenu:'Open navigation',more:'Explore details',prev:'Previous',next:'Next',progress:'Page progress',empty:'Nothing in this category yet.'
   }
 };
@@ -102,7 +102,7 @@ function Brand({ dark = false }) {
 function MiniDashboard({ lang }) {
   return <div className="visual-dashboard" aria-label={lang === 'fa' ? 'تصویر نمایشی داشبورد نگهداری تجهیزات' : 'Illustrative maintenance dashboard interface'} role="img" dir="ltr">
     <div className="dash-sidebar"><div className="dash-logo">V<span>.</span></div><div className="dash-nav-select"/><div className="dash-nav"/><div className="dash-nav"/><div className="dash-nav short"/><div className="dash-nav"/><div className="dash-bottom">◌</div></div>
-    <div className="dash-main"><div className="dash-top"><div><div className="dash-overline">EQUIPMENT / OPERATIONS</div><strong>Maintenance overview</strong></div><span className="dash-demo">DEMO UI</span></div><div className="dash-stats"><div><small>Equipment</small><strong>04</strong><i/></div><div><small>Availability</small><strong>98.2%</strong><i/></div><div><small>Open tasks</small><strong>12</strong><i/></div></div><div className="dash-visual"><div className="dash-visual-head"><span>Operating activity</span><small>LAST 30 DAYS</small></div><svg viewBox="0 0 440 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dashFade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#b4baaa" stopOpacity=".32"/><stop offset="1" stopColor="#b4baaa" stopOpacity="0"/></linearGradient></defs><path d="M0 80 L32 74 L66 88 L95 54 L135 67 L160 43 L207 53 L234 36 L268 51 L306 30 L341 40 L381 22 L414 39 L440 14 L440 120 L0 120Z" fill="url(#dashFade)"/><path d="M0 80 L32 74 L66 88 L95 54 L135 67 L160 43 L207 53 L234 36 L268 51 L306 30 L341 40 L381 22 L414 39 L440 14" stroke="#52654d" strokeWidth="3" fill="none"/></svg></div><div className="dash-rows"><span/><span/><span/></div></div>
+    <div className="dash-main"><div className="dash-top"><div><div className="dash-overline">EQUIPMENT / OPERATIONS</div><strong>Maintenance overview</strong></div><span className="dash-demo">DEMO UI</span></div><div className="dash-stats"><div><small>Equipment</small><strong>04</strong><i/></div><div><small>Availability</small><strong>98.2%</strong><i/></div><div><small>Open tasks</small><strong>12</strong><i/></div></div><div className="dash-visual"><div className="dash-visual-head"><span>Operating activity</span><small>LAST 30 DAYS</small></div><svg viewBox="0 0 440 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dashFade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#b8b8b8" stopOpacity=".32"/><stop offset="1" stopColor="#b8b8b8" stopOpacity="0"/></linearGradient></defs><path d="M0 80 L32 74 L66 88 L95 54 L135 67 L160 43 L207 53 L234 36 L268 51 L306 30 L341 40 L381 22 L414 39 L440 14 L440 120 L0 120Z" fill="url(#dashFade)"/><path d="M0 80 L32 74 L66 88 L95 54 L135 67 L160 43 L207 53 L234 36 L268 51 L306 30 L341 40 L381 22 L414 39 L440 14" stroke="#5f5f5f" strokeWidth="3" fill="none"/></svg></div><div className="dash-rows"><span/><span/><span/></div></div>
   </div>
 }
 
@@ -110,12 +110,12 @@ function MeshVisual() {
   return <div className="mesh-art" aria-label="Conceptual three-dimensional technical mesh" role="img">
     <div className="mesh-label top">REAL-TIME · GEOMETRY</div>
     <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs><linearGradient id="meshG" x1="0" x2="1" y1="1" y2="0"><stop stopColor="#b9c8b7"/><stop offset="1" stopColor="#f1e8d4"/></linearGradient></defs>
+      <defs><linearGradient id="meshG" x1="0" x2="1" y1="1" y2="0"><stop stopColor="#c4c4c4"/><stop offset="1" stopColor="#e8e8e8"/></linearGradient></defs>
       <g stroke="url(#meshG)" fill="none" opacity=".9" strokeWidth="1.2" transform="translate(28 18)">
         {Array.from({length:13},(_,i)=><path key={`a${i}`} d={`M ${40+i*35} ${240+Math.sin(i*.6)*21} C ${120+i*11} ${115+Math.sin(i*.67)*40} ${340+i*7} ${316+Math.cos(i*.55)*30} ${520+i*1.5} ${135+Math.sin(i*.43)*20}`}/>)}
         {Array.from({length:12},(_,i)=><path key={`b${i}`} d={`M ${55+i*4} ${116+i*17} C ${200+i*21} ${158+i*8} ${345+i*13} ${87+i*10} ${520-i*5} ${142+i*13}`}/>)}
       </g>
-      <circle cx="305" cy="182" r="3" fill="#d7e2d3"/><circle cx="455" cy="220" r="3" fill="#d7e2d3"/>
+      <circle cx="305" cy="182" r="3" fill="#dfdfdf"/><circle cx="455" cy="220" r="3" fill="#dfdfdf"/>
     </svg><div className="mesh-label bottom">PARAMETRIC / FORM STUDY — 001</div>
   </div>
 }
@@ -136,9 +136,7 @@ function App() {
   const [mobileOpen,setMobileOpen] = useState(false);
   const [filter,setFilter] = useState('all');
   const [selected,setSelected] = useState(null);
-  const [notice,setNotice] = useState('');
   const [scrolled,setScrolled] = useState(false);
-  const [brief,setBrief] = useState({name:'',email:'',message:''});
   const siteRef=useRef(null);
   const lastFocusedRef=useRef(null);
   const dialogRef=useRef(null);
@@ -196,14 +194,6 @@ function App() {
 
   const selectProject=(w)=>{lastFocusedRef.current=document.activeElement;setSelected(w)};
   const closeProject=()=>{setSelected(null);requestAnimationFrame(()=>lastFocusedRef.current?.focus())};
-  const notify=(s)=>{setNotice(s);window.setTimeout(()=>setNotice(''),4300)};
-  const submit=(e)=>{
-    e.preventDefault();
-    const subject=`VEXORA project inquiry — ${brief.name}`;
-    const body=`Name: ${brief.name}\nEmail: ${brief.email}\n\nProject: ${brief.message}`;
-    if(CONTACT_EMAIL){location.href=`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;notify(t.contactReady)}
-    else{const blob=new Blob([`${subject}\n\n${body}`],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download='VEXORA-project-brief.txt';a.click();window.setTimeout(()=>URL.revokeObjectURL(u),1000);notify(t.contactSaved)}
-  };
   const changeLanguage=()=>{setLang(v=>v==='fa'?'en':'fa');setMobileOpen(false)};
   const menuLinks=[['#home',t.nav[0]],['#expertise',t.nav[1]],['#work',t.nav[2]],['#process',t.nav[3]],['#contact',t.nav[4]]];
 
@@ -226,12 +216,13 @@ function App() {
       <section className="hero" id="home" aria-labelledby="hero-title">
         <div className="hero__photograph" style={{backgroundImage:`url(${ASSET}hero-ceramics.webp)`}} role="img" aria-label={t.heroPhoto}/>
         <div className="hero__wash" aria-hidden="true"/>
+        <div className="reactbits-bg hero__rays" aria-hidden="true"><SideRays rayColor1="#f4f4f4" rayColor2="#9a9a9a" origin="top-right" intensity={1.6} speed={1.2} spread={2.1} density={5} glow={.72} opacity={.66} saturation={0} dust={0} maxDevicePixelRatio={1.5}/></div>
         <div className="container hero__container">
           <div className="hero__content">
             <div className="kicker"><span className="kicker__square"/>{t.heroTop}</div>
             <h1 id="hero-title" className="hero__headline"><span className="headline-line">{t.heroA}</span><span className="headline-line accent-underline">{t.heroB}</span></h1>
             <p className="hero__lead">{t.heroP}</p>
-            <div className="hero__actions"><Magnet padding={32} magnetStrength={6} maxOffset={12}><a className="button button--mint" href="#expertise">{t.heroExplore}<ArrowIcon lang={lang}/></a></Magnet><a className="hero__link" href="#contact">{t.heroContact}<span className="hero__link-line"/></a></div>
+            <div className="hero__actions"><Magnet padding={32} magnetStrength={6} maxOffset={12}><a className="button button--light" href="#expertise">{t.heroExplore}<ArrowIcon lang={lang}/></a></Magnet><a className="hero__link" href="#contact">{t.heroContact}<span className="hero__link-line"/></a></div>
           </div>
           <div className="hero__meta"><span>{t.heroPhoto}</span><span className="hero__meta-index">V/001 — 2026</span></div>
         </div>
@@ -265,16 +256,31 @@ function App() {
         </div>
       </section>
 
-      <section className="manifesto section--dark"><div className="container manifesto__grid"><div data-reveal><span className="eyebrow eyebrow--light"><span className="index-square"/>{t.detailKicker}</span><h2><GradientText colors={['#f7f4e9','#b4dbbd','#f7f4e9']} animationSpeed={15} variant="linear">{t.detailTitle}</GradientText></h2></div><div className="manifesto__aside" data-reveal><p>{t.detailText}</p><div className="manifesto__cross" aria-hidden="true">✳</div></div></div></section>
+      <section className="manifesto section--dark"><div className="reactbits-bg manifesto__blinds" aria-hidden="true"><GradientBlinds gradientColors={['#0b0b0b','#393939','#6b6b6b']} angle={-12} blindCount={14} noise={.15} shine={.55} relief={.6} glow={.25} sway={.15} speed={.45} gradientSpeed={.13} spotlightOpacity={.45} lightColor="#e2e2e2" dpr={1.5}/></div><div className="container manifesto__grid"><div data-reveal><span className="eyebrow eyebrow--light"><span className="index-square"/>{t.detailKicker}</span><h2><GradientText colors={['#f7f7f7','#bcbcbc','#f7f7f7']} animationSpeed={15} variant="linear">{t.detailTitle}</GradientText></h2></div><div className="manifesto__aside" data-reveal><p>{t.detailText}</p><div className="manifesto__cross" aria-hidden="true">✳</div></div></div></section>
 
-      <section id="process" className="process section--light"><div className="container"><div className="section-heading" data-reveal><div><p className="eyebrow"><span className="index-square"/>{t.processIndex}</p><h2>{t.processA}<br/><em>{t.processB}</em></h2></div><p>{t.processText}</p></div><div className="process__grid">{t.steps.map(([title,desc],i)=><SpotlightCard key={i} className="process-card" spotlightColor="#92c4aa" intensity={.14} borderGlow={.4}><span className="process-card__index">0{i+1}</span><div className="process-card__rule"/><h3>{title}</h3><p>{desc}</p><span className="process-card__corner">↗</span></SpotlightCard>)}</div></div></section>
+      <section id="process" className="process section--light"><div className="container"><div className="section-heading" data-reveal><div><p className="eyebrow"><span className="index-square"/>{t.processIndex}</p><h2>{t.processA}<br/><em>{t.processB}</em></h2></div><p>{t.processText}</p></div><div className="process__grid">{t.steps.map(([title,desc],i)=><SpotlightCard key={i} className="process-card" spotlightColor="#bcbcbc" intensity={.14} borderGlow={.4}><span className="process-card__index">0{i+1}</span><div className="process-card__rule"/><h3>{title}</h3><p>{desc}</p><span className="process-card__corner">↗</span></SpotlightCard>)}</div></div></section>
 
-      <section id="contact" className="contact section--dark"><div className="container contact__grid"><div className="contact__message" data-reveal><p className="eyebrow eyebrow--light"><span className="index-square"/>{t.contactIndex}</p><h2>{t.contactTitleA}<br/><span>{t.contactTitleB}</span></h2><p>{t.contactP}</p><div className="contact__decoration" aria-hidden="true"><svg viewBox="0 0 310 180" fill="none"><path d="M8 164C58 164 46 18 125 18S214 164 304 11" stroke="currentColor" strokeWidth="1"/><path d="M8 144C60 144 47 37 125 37S214 145 304 30" stroke="currentColor" opacity=".5"/><path d="M8 124C60 124 47 56 125 56S214 125 304 49" stroke="currentColor" opacity=".25"/></svg></div></div><form className="contact-form" onSubmit={submit} data-reveal><div className="contact-form__pair"><label>{t.contactName}<input required autoComplete="name" maxLength={100} value={brief.name} placeholder={t.contactNamePH} onChange={e=>setBrief({...brief,name:e.target.value})}/></label><label>{t.contactEmail}<input required type="email" autoComplete="email" maxLength={180} value={brief.email} placeholder={t.contactEmailPH} onChange={e=>setBrief({...brief,email:e.target.value})}/></label></div><label>{t.contactMessage}<textarea required rows={5} maxLength={5000} value={brief.message} placeholder={t.contactMessagePH} onChange={e=>setBrief({...brief,message:e.target.value})}/></label><button type="submit" className="button button--mint">{t.contactSend}{CONTACT_EMAIL?<Mail size={18}/>:<Download size={18}/>}</button><p className="contact-form__hint">{t.contactHint}</p></form></div></section>
+      <section id="contact" className="contact section--dark" aria-labelledby="contact-heading">
+        <div className="reactbits-bg contact__fibers" aria-hidden="true"><GhostFibers glowColor="#bcbcbc" lineColor="#f5f5f5" secondaryColor="#737373" layers={2} threads={56} speed={.22} density={.65} glow={.65} brightness={.8} particles={.23} sparkle={.17} waves={.75} dpr={1.4}/></div>
+        <div className="container contact__grid">
+          <div className="contact__message" data-reveal>
+            <p className="eyebrow eyebrow--light"><span className="index-square"/>{t.contactIndex}</p>
+            <h2 id="contact-heading">{t.contactTitleA}<br/><span>{t.contactTitleB}</span></h2>
+            <p>{t.contactP}</p>
+            <div className="contact__owner"><span>{lang==='fa'?'ارتباط مستقیم با':'DIRECT CONTACT'}</span><strong>{lang==='fa'?'عماد قاسمی':'Emad Ghasemi'}</strong><small>VEXORA / DESIGN & DEVELOPMENT</small></div>
+          </div>
+          <address className="contact__details" data-reveal>
+            <a className="contact__detail contact__detail--primary" href="tel:+989366828978"><span>{lang==='fa'?'شماره تماس':'PHONE'}</span><strong dir="ltr">0936 682 8978</strong><ArrowIcon lang={lang} size={20}/></a>
+            <a className="contact__detail" href="mailto:emad.gh.09@gmail.com"><span>{lang==='fa'?'ایمیل':'EMAIL'}</span><strong dir="ltr">emad.gh.09@gmail.com</strong><ArrowIcon lang={lang} size={20}/></a>
+            <a className="contact__detail" href="https://t.me/emadghasemi" target="_blank" rel="noopener noreferrer"><span>TELEGRAM</span><strong dir="ltr">@emadghasemi</strong><ArrowIcon lang={lang} size={20}/></a>
+            <a className="contact__detail" href="https://www.instagram.com/vexorastudio/" target="_blank" rel="noopener noreferrer"><span>INSTAGRAM</span><strong dir="ltr">@vexorastudio</strong><ArrowIcon lang={lang} size={20}/></a>
+          </address>
+        </div>
+      </section>
     </main>
     <footer className="footer"><div className="container"><div className="footer__top"><Brand/><p>{t.footerLine}</p><a href="#home" aria-label={t.footerTop}>{t.footerTop}<ArrowUp size={18}/></a></div><div className="footer__wordmark" aria-hidden="true">VEXORA<span>.</span></div><div className="footer__bottom"><span>© {new Date().getFullYear()} VEXORA</span><span>{t.footerLegal}</span><span>DESIGN / DEVELOPMENT / 3D</span></div></div></footer>
 
     {selected&&<div className="modal" onMouseDown={e=>{if(e.target===e.currentTarget)closeProject()}} role="presentation"><div className="modal__dialog" role="dialog" aria-modal="true" aria-label={selected.title} ref={dialogRef}><div className="modal__top"><span>{t.modalTag} / {selected.num}</span><button type="button" onClick={closeProject} aria-label={t.modalClose}><X size={21}/></button></div><div className="modal__media">{selected.visual==='image'?<img src={ASSET+selected.image} alt={selected.title} width="1000" height="650"/>:selected.visual==='dashboard'?<MiniDashboard lang={lang}/>:<MeshVisual/>}</div><div className="modal__body"><span className="micro-label">{selected.type}</span><h2>{selected.title}</h2><p>{selected.detail}</p><span className="modal__notice">{selected.tag}</span></div></div></div>}
-    {notice&&<div className="toast" role="status"><Check size={18}/>{notice}<button type="button" aria-label="Dismiss" onClick={()=>setNotice('')}><X size={16}/></button></div>}
   </div>
 }
 
