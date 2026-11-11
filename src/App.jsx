@@ -102,7 +102,7 @@ function Brand({ dark = false }) {
 function MiniDashboard({ lang }) {
   return <div className="visual-dashboard" aria-label={lang === 'fa' ? 'تصویر نمایشی داشبورد نگهداری تجهیزات' : 'Illustrative maintenance dashboard interface'} role="img" dir="ltr">
     <div className="dash-sidebar"><div className="dash-logo">V<span>.</span></div><div className="dash-nav-select"/><div className="dash-nav"/><div className="dash-nav"/><div className="dash-nav short"/><div className="dash-nav"/><div className="dash-bottom">◌</div></div>
-    <div className="dash-main"><div className="dash-top"><div><div className="dash-overline">EQUIPMENT / OPERATIONS</div><strong>Maintenance overview</strong></div><span className="dash-demo">DEMO UI</span></div><div className="dash-stats"><div><small>Equipment</small><strong>04</strong><i/></div><div><small>Availability</small><strong>98.2%</strong><i/></div><div><small>Open tasks</small><strong>12</strong><i/></div></div><div className="dash-visual"><div className="dash-visual-head"><span>Operating activity</span><small>LAST 30 DAYS</small></div><svg viewBox="0 0 440 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dashFade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#b8b8b8" stopOpacity=".32"/><stop offset="1" stopColor="#b8b8b8" stopOpacity="0"/></linearGradient></defs><path d="M0 80 L32 74 L66 88 L95 54 L135 67 L160 43 L207 53 L234 36 L268 51 L306 30 L341 40 L381 22 L414 39 L440 14 L440 120 L0 120Z" fill="url(#dashFade)"/><path d="M0 80 L32 74 L66 88 L95 54 L135 67 L160 43 L207 53 L234 36 L268 51 L306 30 L341 40 L381 22 L414 39 L440 14" stroke="#5f5f5f" strokeWidth="3" fill="none"/></svg></div><div className="dash-rows"><span/><span/><span/></div></div>
+    <div className="dash-main"><div className="dash-top"><div><div className="dash-overline">EQUIPMENT / OPERATIONS</div><strong>Maintenance overview</strong></div><span className="dash-demo">DEMO UI</span></div><div className="dash-stats"><div><small>Equipment</small><strong>04</strong><i/></div><div><small>Availability</small><strong>98.2%</strong><i/></div><div><small>Open tasks</small><strong>12</strong><i/></div></div><div className="dash-visual"><div className="dash-visual-head"><span>Operating activity</span><small>LAST 30 DAYS</small></div><svg viewBox="0 0 440 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dashFade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#6e9df8" stopOpacity=".32"/><stop offset="1" stopColor="#ae9aff" stopOpacity="0"/></linearGradient></defs><path d="M0 80 L32 74 L66 88 L95 54 L135 67 L160 43 L207 53 L234 36 L268 51 L306 30 L341 40 L381 22 L414 39 L440 14 L440 120 L0 120Z" fill="url(#dashFade)"/><path d="M0 80 L32 74 L66 88 L95 54 L135 67 L160 43 L207 53 L234 36 L268 51 L306 30 L341 40 L381 22 L414 39 L440 14" stroke="#5277e6" strokeWidth="3" fill="none"/></svg></div><div className="dash-rows"><span/><span/><span/></div></div>
   </div>
 }
 
@@ -110,12 +110,12 @@ function MeshVisual() {
   return <div className="mesh-art" aria-label="Conceptual three-dimensional technical mesh" role="img">
     <div className="mesh-label top">REAL-TIME · GEOMETRY</div>
     <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      <defs><linearGradient id="meshG" x1="0" x2="1" y1="1" y2="0"><stop stopColor="#c4c4c4"/><stop offset="1" stopColor="#e8e8e8"/></linearGradient></defs>
+      <defs><linearGradient id="meshG" x1="0" x2="1" y1="1" y2="0"><stop stopColor="#4e8dff"/><stop offset="1" stopColor="#c29cff"/></linearGradient></defs>
       <g stroke="url(#meshG)" fill="none" opacity=".9" strokeWidth="1.2" transform="translate(28 18)">
         {Array.from({length:13},(_,i)=><path key={`a${i}`} d={`M ${40+i*35} ${240+Math.sin(i*.6)*21} C ${120+i*11} ${115+Math.sin(i*.67)*40} ${340+i*7} ${316+Math.cos(i*.55)*30} ${520+i*1.5} ${135+Math.sin(i*.43)*20}`}/>)}
         {Array.from({length:12},(_,i)=><path key={`b${i}`} d={`M ${55+i*4} ${116+i*17} C ${200+i*21} ${158+i*8} ${345+i*13} ${87+i*10} ${520-i*5} ${142+i*13}`}/>)}
       </g>
-      <circle cx="305" cy="182" r="3" fill="#dfdfdf"/><circle cx="455" cy="220" r="3" fill="#dfdfdf"/>
+      <circle cx="305" cy="182" r="3" fill="#ffd28e"/><circle cx="455" cy="220" r="3" fill="#ffd28e"/>
     </svg><div className="mesh-label bottom">PARAMETRIC / FORM STUDY — 001</div>
   </div>
 }

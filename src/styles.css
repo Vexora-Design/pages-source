@@ -269,3 +269,13 @@ em{font-style:normal;color:var(--accent-dark)}
 @media(max-width:650px){
 .hero__wash,[dir=rtl] .hero__wash{background:linear-gradient(to top,#111 8%,rgba(17,17,17,.94) 37%,rgba(17,17,17,.42) 77%,rgba(17,17,17,.12) 100%)}
 }
+
+/* Portfolio illustration colors are independent from the grayscale page chrome. */
+.visual-dashboard .dash-logo span{color:#9fbbff}
+.visual-dashboard .dash-nav-select{background:#5e7ae8}
+.visual-dashboard .dash-stats>div:nth-child(1) i{background:#88acff}
+.visual-dashboard .dash-stats>div:nth-child(2) i{background:#7ddac8}
+.visual-dashboard .dash-stats>div:nth-child(3) i{background:#ffc489}
+.visual-dashboard .dash-demo{background:#dde7ff;color:#31499c}
+.mesh-art svg{filter:drop-shadow(0 4px 25px rgba(104,140,250,.3))}
+.mesh-art::before{background-image:linear-gradient(rgba(144,160,228,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(144,160,228,.14) 1px,transparent 1px)}
