@@ -1,10 +1,14 @@
-# VEXORA — Official source
+# VEXORA — Design & Digital Development
 
-Portfolio for VEXORA, an independent multidisciplinary design and digital development practice.
+VEXORA's independent creative portfolio, redesigned as a content-led, responsive editorial website. Built with **React 19, Vite, unmodified official React Bits source components, GSAP / ScrollTrigger** and Lucide icons.
 
-**Tech:** React 19, Vite, original React Bits components, GSAP / ScrollTrigger.
+## Site and source
 
-**Live site:** https://vexora-design.github.io/
+- **Source:** https://github.com/Vexora-Design/pages-source
+- **Published GitHub Pages repo:** https://github.com/Vexora-Design/vexora-design.github.io
+- **Site:** https://vexora-design.github.io/ (or the repository's configured CNAME domain)
+
+No files or workflows in `emadgh/emadgh.github.io` are involved.
 
 ## Local development
 
@@ -13,37 +17,39 @@ npm install
 npm run dev
 ```
 
-The default language is Persian (RTL). Language selection is stored in the `vexora_lang` cookie.
+### Independent build directory
 
-## Separate build output
+By default `npm run build` writes to a sibling folder named `<source-folder>-build`.
 
 ```bash
 npm run build
 npm run build -- --out ../vexora-design.github.io
-npm run build -- --out "D:/Websites/vexora-build"
+npm run build -- --out "D:/Sites/VEXORA-build"
 ```
 
-Default destination is a sibling folder: if source lives in `vexora-source/`, the build goes to `vexora-source-build/`. Configure `outputDir` in `vexora.config.json`, or use `VEXORA_BUILD_DIR`. A build replaces generated content but preserves `.git`, `.github`, `CNAME`, and README where present. Do not point this at unrelated folders.
+You may alternatively set `VEXORA_BUILD_DIR` or `outputDir` in `vexora.config.json`. Built website files overwrite older built files in the output directory **except preserved metadata** (`.git`, `.github`, `CNAME`, README, etc.). Do not use a destination containing unrelated work.
 
-## Repositories
+## Languages and typography
 
-- **Source:** [Vexora-Design/pages-source](https://github.com/Vexora-Design/pages-source)
-- **Built static website:** [Vexora-Design/vexora-design.github.io](https://github.com/Vexora-Design/vexora-design.github.io)
+Persian (`fa`, `rtl`) is the default. Language changes persist for one year in a `SameSite=Lax` cookie named `vexora_lang` and toggle `document.documentElement.dir` and `lang`. English is LTR. The CSS prioritizes Yekan; place your properly licensed `Yekan.woff2` in `public/fonts`. Until then `Vazirmatn` is used as fallback. Proprietary fonts are not bundled.
 
-For manual publication, clone both repositories into sibling directories, build into the deployment checkout, then commit and push the build repository:
+## Content integrity
 
-```bash
-cd pages-source
-npm install
-npm run build -- --out ../vexora-design.github.io
-cd ../vexora-design.github.io
-git add -A
-git commit -m "Update VEXORA website"
-git push origin main
-```
+The website describes real service capabilities: porcelain/tile surface graphics, catalog and mockup design, software development and process automation, 3D modeling/architectural visualization, interactive tools, and game development. The portfolio cards are **illustrative directions, not representations of completed client engagements**. Concept imagery and demo interfaces are labeled as such.
 
-The `publish-pages.yml` workflow can also build and push to the separate repository, once `VEXORA_DEPLOY_TOKEN` is configured as a GitHub Actions secret with **Contents: read/write** access to the deployment repository. This workflow never pushes to `emadgh/emadgh.github.io`.
+## Motion stack
 
-## Fonts and content
+Actual official React Bits source files live in `src/components/reactbits/`: `SpotlightCard`, `GradientText`, and `Magnet`. They have not been rebuilt as lookalikes. GSAP and the official ScrollTrigger and `@gsap/react` integration animate section entrances and provide restrained hero parallax. `prefers-reduced-motion` is respected.
 
-Licensed `Yekan.woff2` can be placed in `public/fonts/`; the site falls back to Vazirmatn. Font files are not redistributed here. The imagery and portfolio samples are conceptual demonstrations, not client case studies.
+## Deployment
+
+1. Push new source to `Vexora-Design/pages-source/main`.
+2. The separate build repository contains a workflow `rebuild-vexora.yml` that builds directly from the public source repository and commits the result to its **own** `main`. Trigger it from **Actions → Rebuild VEXORA from official source → Run workflow** when necessary.
+3. To automate deployments on every source push, configure `VEXORA_DEPLOY_TOKEN` on the source repo with `Contents: read/write` access to the build repository, as described in `.github/workflows/publish-pages.yml`.
+4. GitHub Pages should serve `/ (root)` from `main`.
+
+The existing `CNAME` file in the published repository is preserved.
+
+## Design reference
+
+UI/UX review follows [UI UX Pro Max Skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill), especially the Creative Agency / Portfolio profiles, storytelling landing layout, responsive UX guidance, keyboard accessibility, reduced-motion guidance and standard GSAP scroll reveals. See `design-system/MASTER.md`.
